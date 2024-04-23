@@ -17,7 +17,7 @@ export default function RegisterHeader() {
           </nav>
         </div>
         <div></div>
-        <p className='text-orange mr-5'>Bạn Cần Giúp Đỡ?</p>
+        <p className='text-orange mr-5 px-4'>Bạn Cần Giúp Đỡ?</p>
       </div>
     </header>
   )
