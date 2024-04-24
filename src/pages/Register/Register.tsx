@@ -1,36 +1,57 @@
+import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
+import { rules } from '~/utils/rules'
+
+interface FormType {
+  email: string
+  password: string
+  confirm_password: string
+}
 
 export default function Register() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormType>()
+
+  const onSubmit = handleSubmit((data) => {
+    // console.log(data)
+  })
+
+  console.log('errors', errors)
   return (
     <div className='bg-orange'>
       <div className='max-w-7xl mx-auto px-4'>
         <div className='grid grid-cols-1 lg:grid-cols-5 py-12 lg:py-32 lg:pr-10'>
           <div className='lg:col-span-2 lg:col-start-4'>
-            <form className='bg-white p-10 rounded'>
+            <form className='bg-white p-10 rounded' onSubmit={onSubmit} noValidate>
               <div className='text-2xl'>Đăng Ký</div>
               <div className='mt-8'>
                 <input
                   type='email'
-                  name='email'
                   className='p-4 outline-none w-full border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
                   placeholder='Email'
+                  {...register('email', rules.email)}
                 />
-                <div className='text-sm text-red-500 mt-1 min-h-[1rem]'></div>
+                <div className='text-sm text-red-500 mt-1 min-h-[1rem]'>{errors.email?.message}</div>
                 <div className='mt-3'>
                   <input
                     type='password'
-                    name='password'
                     className='p-4 outline-none w-full border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
                     placeholder='PassWord'
+                    {...register('password', rules.password)}
                   />
+                  <div className='text-sm text-red-500 mt-1 min-h-[1rem]'>{errors.password?.message}</div>
                 </div>
                 <div className='mt-8'>
                   <input
                     type='password'
-                    name='confirm_password'
                     className='p-4 outline-none w-full border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
                     placeholder='Confirm PassWord'
+                    {...register('confirm_password', rules.confirm_password)}
                   />
+                  <div className='text-sm text-red-500 mt-1 min-h-[1rem]'>{errors.confirm_password?.message}</div>
                 </div>
                 <div className='mt-8'>
                   <button className='px-4 py-3 rounded bg-red-500 w-full text-white uppercase hover:bg-red-600'>
