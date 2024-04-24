@@ -16,19 +16,20 @@ export default function Login() {
                   placeholder='Email'
                 />
                 <div className='text-sm text-red-500 mt-1 min-h-[1rem]'></div>
-                <div className='mt-3'>
-                  <input
-                    type='password'
-                    name='password'
-                    className='p-4 outline-none w-full border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
-                    placeholder='PassWord'
-                  />
-                </div>
-                <div className='mt-8'>
-                  <button className='px-4 py-3 rounded bg-red-500 w-full text-white uppercase hover:bg-red-600'>
-                    Đăng Nhập
-                  </button>
-                </div>
+              </div>
+
+              <div className='mt-3'>
+                <input
+                  type='password'
+                  name='password'
+                  className='p-4 outline-none w-full border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
+                  placeholder='PassWord'
+                />
+              </div>
+              <div className='mt-8'>
+                <button className='px-4 py-3 rounded bg-red-500 w-full text-white uppercase hover:bg-red-600'>
+                  Đăng Nhập
+                </button>
               </div>
               <div className='mt-4'>
                 <div className='flex items-center justify-center text-slate-400'>
