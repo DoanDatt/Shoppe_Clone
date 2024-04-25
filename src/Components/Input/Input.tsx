@@ -5,6 +5,7 @@ interface Props {
   classname: string
   type: React.HTMLInputTypeAttribute
   placeholder?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>
   name: string
   rules?: RegisterOptions

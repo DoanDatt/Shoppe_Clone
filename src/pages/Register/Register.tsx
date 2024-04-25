@@ -1,32 +1,32 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import Input from '~/Components/Input'
-import { getRules } from '~/utils/rules'
+import { Schema, schema } from '~/utils/rules'
 
-interface FormType {
-  email: string
-  password: string
-  confirm_password: string
-}
+type FormType = Schema
 
 export default function Register() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    getValues
-  } = useForm<FormType>()
-  const rules = getRules(getValues)
+    formState: { errors }
+  } = useForm<FormType>({
+    resolver: yupResolver(schema)
+  })
+  // const rules = getRules(getValues)
 
-  const onSubmit = handleSubmit(
-    (data) => {
-      // console.log(data)
-    },
-    (data) => {
-      const password = getValues('password')
-      console.log('password', password)
-    }
-  )
+  // const onSubmit = handleSubmit()
+  // (data) => {
+  //   console.log(data)
+  // },
+  const onSubmit = handleSubmit((data) => {
+    console.log(data)
+  })
+  // (data) => {
+  //   const password = getValues('password')
+  //   console.log('password', password)
+  // }
 
   return (
     <div className='bg-orange'>
@@ -41,7 +41,6 @@ export default function Register() {
                 placeholder='Email'
                 register={register}
                 name='email'
-                rules={rules.email}
                 errorMessage={errors.email?.message}
               />
               <Input
@@ -50,7 +49,6 @@ export default function Register() {
                 placeholder='Password'
                 register={register}
                 name='password'
-                rules={rules.password}
                 errorMessage={errors.password?.message}
               />
               <Input
@@ -59,7 +57,6 @@ export default function Register() {
                 placeholder='Confirm Password'
                 register={register}
                 name='confirm_password'
-                rules={rules.confirm_password}
                 errorMessage={errors.confirm_password?.message}
               />
               <div className='mt-8'>
